@@ -21,4 +21,16 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true  
-   
+
+  ignoreDifferences:
+  - group: ''
+    kind: Secret
+    jsonPointers:
+      - /data
+      - /stringData
+  - group: apps
+    kind: Deployment
+    name: simple-deployment
+    namespace: example02
+    jsonPointers:
+      - /spec/replicas
